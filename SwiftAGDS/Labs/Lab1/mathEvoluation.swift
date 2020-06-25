@@ -32,25 +32,25 @@ import Foundation
 //
 
 func evoluate(expression:String) -> Int {
-    let result:(expr:String, value:Int) = evoluate_helper(expression: expression, index: 0)
+    var index = 0
+    let result:(expr:String, value:Int) = evoluate_helper(expression: expression, index: &index)
     return Int(result.expr)!
 }
 
-func evoluate_helper(expression:String, index indexInt:Int) -> (String, Int) {
-    var index = indexInt
+func evoluate_helper(expression:String, index: inout Int) -> (String, Int) {
     let char = String(expression[expression.index(expression.startIndex, offsetBy: index)])
     if let _ = Int(char) {
         return (char, index)
     } else {
         index += 1
-        let term1:(String, Int) = evoluate_helper(expression: expression, index: index)
+        let term1:(String, Int) = evoluate_helper(expression: expression, index: &index)
         let operand1 = Int(term1.0)!
-        index = term1.1 + 1
+        index += 1
         let op = String(expression[expression.index(expression.startIndex, offsetBy: index)])
         index += 1
-        let term2:(String, Int) = evoluate_helper(expression: expression, index: index)
+        let term2:(String, Int) = evoluate_helper(expression: expression, index: &index)
         let operand2 = Int(term2.0)!
-        index = term2.1 + 1
+        index += 1
         if op == "+" {
             return (String(operand1 + operand2), index)
         } else {
