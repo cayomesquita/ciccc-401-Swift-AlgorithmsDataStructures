@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C038915124A261B1004CA76E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C038915024A261B1004CA76E /* main.swift */; };
 		C038915824A261C9004CA76E /* Recursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C038915724A261C9004CA76E /* Recursion.swift */; };
+		C0C89B5D24A44E18001351CA /* mathEvoluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C89B5C24A44E18001351CA /* mathEvoluation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,7 @@
 		C038914D24A261B1004CA76E /* SwiftAGDS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftAGDS; sourceTree = BUILT_PRODUCTS_DIR; };
 		C038915024A261B1004CA76E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C038915724A261C9004CA76E /* Recursion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recursion.swift; sourceTree = "<group>"; };
+		C0C89B5C24A44E18001351CA /* mathEvoluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mathEvoluation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				C038915024A261B1004CA76E /* main.swift */,
+				C0C89B5F24A44E2C001351CA /* Labs */,
 				C038915924A261CD004CA76E /* recursion */,
 			);
 			path = SwiftAGDS;
@@ -71,6 +74,22 @@
 				C038915724A261C9004CA76E /* Recursion.swift */,
 			);
 			path = recursion;
+			sourceTree = "<group>";
+		};
+		C0C89B5E24A44E1E001351CA /* Lab1 */ = {
+			isa = PBXGroup;
+			children = (
+				C0C89B5C24A44E18001351CA /* mathEvoluation.swift */,
+			);
+			path = Lab1;
+			sourceTree = "<group>";
+		};
+		C0C89B5F24A44E2C001351CA /* Labs */ = {
+			isa = PBXGroup;
+			children = (
+				C0C89B5E24A44E1E001351CA /* Lab1 */,
+			);
+			path = Labs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +152,7 @@
 			files = (
 				C038915824A261C9004CA76E /* Recursion.swift in Sources */,
 				C038915124A261B1004CA76E /* main.swift in Sources */,
+				C0C89B5D24A44E18001351CA /* mathEvoluation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
