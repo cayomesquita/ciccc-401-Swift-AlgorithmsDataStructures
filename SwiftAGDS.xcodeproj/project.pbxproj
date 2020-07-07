@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0299BE324B43A4300314F37 /* QuickSort.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0299BE224B43A4300314F37 /* QuickSort.swift */; };
 		C038915124A261B1004CA76E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C038915024A261B1004CA76E /* main.swift */; };
 		C038915824A261C9004CA76E /* Recursion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C038915724A261C9004CA76E /* Recursion.swift */; };
 		C0C89B5D24A44E18001351CA /* mathEvoluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C89B5C24A44E18001351CA /* mathEvoluation.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C0299BE224B43A4300314F37 /* QuickSort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSort.swift; sourceTree = "<group>"; };
 		C038914D24A261B1004CA76E /* SwiftAGDS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SwiftAGDS; sourceTree = BUILT_PRODUCTS_DIR; };
 		C038915024A261B1004CA76E /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		C038915724A261C9004CA76E /* Recursion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recursion.swift; sourceTree = "<group>"; };
@@ -42,6 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C0299BE424B43A5000314F37 /* Lab2 */ = {
+			isa = PBXGroup;
+			children = (
+				C0299BE224B43A4300314F37 /* QuickSort.swift */,
+			);
+			path = Lab2;
+			sourceTree = "<group>";
+		};
 		C038914424A261B1004CA76E = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				C0C89B5E24A44E1E001351CA /* Lab1 */,
+				C0299BE424B43A5000314F37 /* Lab2 */,
 			);
 			path = Labs;
 			sourceTree = "<group>";
@@ -153,6 +164,7 @@
 				C038915824A261C9004CA76E /* Recursion.swift in Sources */,
 				C038915124A261B1004CA76E /* main.swift in Sources */,
 				C0C89B5D24A44E18001351CA /* mathEvoluation.swift in Sources */,
+				C0299BE324B43A4300314F37 /* QuickSort.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

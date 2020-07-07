@@ -8,16 +8,9 @@
 
 import Foundation
 
+let arr = [4, 3, 6, 5, 1, 2, 8, 9, 7, 5]
 print("Hello, World!")
-print(evoluate(expression: "7"))
-print(evoluate(expression: "(2+2)"))
-print(evoluate(expression: "(1+(2*4))"))
-print(evoluate(expression: "((1+3)+((1+2)*5))"))
+print(quickSort(arr))
 
 
-
-//# evaluate("7")                 -> 7
-//# evaluate("(2+2)"              -> 4
-//# evaluate("(1+(2*4))"          -> 9
-//# evaluate("((1+3)+((1+2)*5))") -> 19
 
