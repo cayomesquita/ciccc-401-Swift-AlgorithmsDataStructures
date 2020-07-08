@@ -10,7 +10,7 @@ import Foundation
 
 print("Hello, World!")
 var board = Board.init(size: 8)
-print("Number of recursive calls: \(solveQueens(board: &board))")
+print("Number of recursive calls: \(solveQueens(board: &board)!)")
 
 
 
