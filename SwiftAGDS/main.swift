@@ -8,9 +8,9 @@
 
 import Foundation
 
-let arr = [4, 3, 6, 5, 1, 2, 8, 9, 7, 5]
 print("Hello, World!")
-print(quickSort(arr))
+var board = Board.init(size: 8)
+print("Number of recursive calls: \(solveQueens(board: &board))")
 
 
 
