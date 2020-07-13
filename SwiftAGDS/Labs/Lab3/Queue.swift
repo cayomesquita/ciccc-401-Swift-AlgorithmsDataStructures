@@ -41,7 +41,7 @@ public final class Queue<E> {
     }
     
     public func peek() -> E? {
-        if let node = self.last {
+        if let node = self.first {
             return node.value
         }
         return nil

@@ -19,6 +19,23 @@ for num in stack {
     print(num)
 }
 
+print(stack.peek())
+for num in stack {
+    print(num)
+}
+print(stack.pop())
+for num in stack {
+    print(num)
+}
+print(stack.peek())
+for num in stack {
+    print(num)
+}
+print(stack.push(item: 10))
+for num in stack {
+    print(num)
+}
+
 print("Queue")
 
 var queue = Queue<Int>()
@@ -26,6 +43,22 @@ queue.enqueue(item: 1)
 queue.enqueue(item: 2)
 queue.enqueue(item: 3)
 
+for num in queue {
+    print(num)
+}
+print(queue.peek())
+for num in queue {
+    print(num)
+}
+print(queue.dequeue())
+for num in queue {
+    print(num)
+}
+print(queue.peek())
+for num in queue {
+    print(num)
+}
+print(queue.enqueue(item: 10))
 for num in queue {
     print(num)
 }
