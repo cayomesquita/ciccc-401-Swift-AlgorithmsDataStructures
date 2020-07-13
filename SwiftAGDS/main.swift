@@ -9,8 +9,17 @@
 import Foundation
 
 print("Hello, World!")
-var board = Board.init(size: 8)
-print("Number of recursive calls: \(solveQueens(board: &board)!)")
+
+var nums = Stack<Int>()
+nums.push(item: 1)
+nums.push(item: 2)
+nums.push(item: 3)
+
+for num in nums {
+    print(num)
+}
+
+
 
 
 
