@@ -14,7 +14,7 @@
 		C055ED0A24B63CB100DD5412 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = C055ED0824B63CB100DD5412 /* Board.swift */; };
 		C0B5DBF124B8CFF70089B1EB /* TreeTrasersal.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DBF024B8CFF70089B1EB /* TreeTrasersal.swift */; };
 		C0B5DBF424BC86E80089B1EB /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DBF324BC86E80089B1EB /* Stack.swift */; };
-		C0B5DBF624BC87140089B1EB /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DBF524BC87140089B1EB /* Node.swift */; };
+		C0B5DBF824BC92460089B1EB /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B5DBF724BC92460089B1EB /* Queue.swift */; };
 		C0C89B5D24A44E18001351CA /* mathEvoluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C89B5C24A44E18001351CA /* mathEvoluation.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +39,7 @@
 		C055ED0824B63CB100DD5412 /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		C0B5DBF024B8CFF70089B1EB /* TreeTrasersal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTrasersal.swift; sourceTree = "<group>"; };
 		C0B5DBF324BC86E80089B1EB /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
-		C0B5DBF524BC87140089B1EB /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		C0B5DBF724BC92460089B1EB /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		C0C89B5C24A44E18001351CA /* mathEvoluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mathEvoluation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				C0B5DBF324BC86E80089B1EB /* Stack.swift */,
-				C0B5DBF524BC87140089B1EB /* Node.swift */,
+				C0B5DBF724BC92460089B1EB /* Queue.swift */,
 			);
 			path = Lab3;
 			sourceTree = "<group>";
@@ -211,8 +211,8 @@
 				C0B5DBF124B8CFF70089B1EB /* TreeTrasersal.swift in Sources */,
 				C038915824A261C9004CA76E /* Recursion.swift in Sources */,
 				C055ED0924B63CB100DD5412 /* QueensSolver.swift in Sources */,
-				C0B5DBF624BC87140089B1EB /* Node.swift in Sources */,
 				C055ED0A24B63CB100DD5412 /* Board.swift in Sources */,
+				C0B5DBF824BC92460089B1EB /* Queue.swift in Sources */,
 				C0B5DBF424BC86E80089B1EB /* Stack.swift in Sources */,
 				C038915124A261B1004CA76E /* main.swift in Sources */,
 				C0C89B5D24A44E18001351CA /* mathEvoluation.swift in Sources */,

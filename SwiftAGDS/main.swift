@@ -8,14 +8,25 @@
 
 import Foundation
 
-print("Hello, World!")
+print("Stack")
 
-var nums = Stack<Int>()
-nums.push(item: 1)
-nums.push(item: 2)
-nums.push(item: 3)
+var stack = Stack<Int>()
+stack.push(item: 1)
+stack.push(item: 2)
+stack.push(item: 3)
 
-for num in nums {
+for num in stack {
+    print(num)
+}
+
+print("Queue")
+
+var queue = Queue<Int>()
+queue.enqueue(item: 1)
+queue.enqueue(item: 2)
+queue.enqueue(item: 3)
+
+for num in queue {
     print(num)
 }
 

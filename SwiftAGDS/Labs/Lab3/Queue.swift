@@ -1,5 +1,5 @@
 //
-//  Stack.swift
+//  Queue.swift
 //  SwiftAGDS
 //
 //  Created by Cornerstone on 2020-07-13.
@@ -8,45 +8,48 @@
 
 import Foundation
 
-public final class Stack<E> {
+public final class Queue<E> {
     private(set) var count: Int
-    fileprivate var root: Node<E>?
-
+    fileprivate var first: Node<E>?
+    fileprivate var last: Node<E>?
+    
     init() {
         self.count = 0
-        self.root = nil
+        self.first = nil
+        self.last = nil
     }
-
-    public func push(item: E) {
+    
+    public func enqueue(item: E) {
+        let newNode = Node.init(item)
         if isEmpty() {
-            self.root = Node.init(item)
+            self.first = newNode
+            self.last = newNode
         } else {
-            self.root = Node.init(item, self.root!)
+            self.last!.next = newNode
+            self.last = newNode
         }
         self.count += 1
     }
-
-    public func pop() -> E? {
-        if let node = self.root {
-            self.root = node.next
+    
+    public func dequeue() -> E? {
+        if let node = self.first {
+            self.first = node.next
             self.count -= 1
             return node.value
         }
         return nil
     }
-
+    
     public func peek() -> E? {
-        if let node = self.root {
+        if let node = self.last {
             return node.value
         }
         return nil
     }
-
+    
     public func isEmpty() -> Bool {
-        return self.root == nil
+        return self.first == nil
     }
-
-
 }
 
 fileprivate class Node<T> {
@@ -59,12 +62,12 @@ fileprivate class Node<T> {
     }
 }
 
-extension Stack : Sequence {
+extension Queue : Sequence {
     public typealias Element = E
 
-    public typealias Iterator = StackIterator
+    public typealias Iterator = QueueIterator
 
-    public class StackIterator : IteratorProtocol{
+    public class QueueIterator : IteratorProtocol{
         fileprivate var currentNode: Node<E>?
 
         public typealias Element = E
@@ -82,7 +85,6 @@ extension Stack : Sequence {
     }
 
     public func makeIterator() -> Iterator {
-        return StackIterator(root)
+        return QueueIterator(first)
     }
 }
-
