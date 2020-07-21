@@ -8,11 +8,10 @@
 
 import Foundation
 
-//let path = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/LCATestCases/lca50000.in"
-let path = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/WhoIsMyParentTestCases/wimp12.in"
+let path = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/DiameterTestCases/diameter8.in"
 
 
-print(WhoIsMyParent().solutionByInputFile(path: path))
+print(Diameter().solutionByInputFile(path: path))
 
 
 
