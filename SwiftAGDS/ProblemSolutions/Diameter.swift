@@ -10,11 +10,13 @@ import Foundation
 
 class Diameter {
     
-    func solution(edgesDic: [Int:[Edge]]) -> Int {
+    var adjacentList = [[Edge]]()
+    
+    func solution(adjList: [[Edge]]) -> Int {
         var longestDistance = 0
-        for entry in edgesDic {
-            if entry.value.count == 1 {
-                distanceDFS(parent: entry.key, edge: entry.value.first!, edgesDic: edgesDic, distanceSoFar: 0, longestDistance: &longestDistance)
+        for num in 1..<adjList.count {
+            if adjList[num].count == 1 {
+                distanceDFS(parent: num, edge: adjList[num].first!, distanceSoFar: 0, longestDistance: &longestDistance)
             }
         }
         return longestDistance
@@ -22,43 +24,37 @@ class Diameter {
     
     func solutionByInputFile(path: String) -> Int{
         if let lines = readFile(path), let numVertices = Int(lines[0]) {
-            var edgeDic = [Int:[Edge]]()
+            adjacentList = [[Edge]](repeating: [Edge](), count: numVertices)
             for i in 1...numVertices {
-                let arr = lines[i].components(separatedBy: .whitespaces)
+                let arr = lines[i].components(separatedBy: .whitespaces).map {Int($0)!}
                 var j = 0
-                var element = Int(arr[j])!
+                var element = Int(arr[j])
                 let verticeA = element
                 j += 1
-                element = Int(arr[j])!
+                element = Int(arr[j])
                 while element >= 0 {
                     let verticeB = element
                     j += 1
-                    element = Int(arr[j])!
+                    element = Int(arr[j])
                     let distance = element
                     let edge = Edge.init(vertice: verticeB, distance: distance)
-                    if let aux = edgeDic[verticeA] {
-                        var arr = aux
-                        arr.append(edge)
-                        edgeDic[verticeA] = arr
-                    } else {
-                        edgeDic[verticeA] = [edge]
-                    }
-                    
+                    adjacentList[verticeA - 1].append(edge)
                     j += 1
-                    element = Int(arr[j])!
+                    element = Int(arr[j])
                 }
             }
-            return solution(edgesDic: edgeDic)
+            return solution(adjList: adjacentList)
         }
         return -1
     }
     
-    fileprivate func distanceDFS(parent: Int, edge current: Edge, edgesDic: [Int:[Edge]], distanceSoFar: Int, longestDistance: inout Int) {
+    fileprivate func distanceDFS(parent: Int, edge current: Edge, distanceSoFar: Int, longestDistance: inout Int) {
         let distance = distanceSoFar + current.distance
-        if let edges = edgesDic[current.vertice], edges.count > 1 {
+        let edges = adjacentList[current.vertice - 1]
+        if edges.count > 1 {
             for edge in edges {
                 if edge.vertice != parent {
-                    distanceDFS(parent: current.vertice, edge: edge, edgesDic: edgesDic, distanceSoFar: distance, longestDistance: &longestDistance)
+                    distanceDFS(parent: current.vertice, edge: edge, distanceSoFar: distance, longestDistance: &longestDistance)
                 }
             }
         } else {
