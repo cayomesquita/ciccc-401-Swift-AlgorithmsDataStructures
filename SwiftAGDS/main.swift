@@ -8,10 +8,9 @@
 
 import Foundation
 
-let path = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/DiameterTestCases/diameter8.in"
+let path = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/CyclicPermutation/cyclicPerm1.in"
 
-
-print(Diameter().solutionByInputFile(path: path))
+print(CyclicPermutation().solutionByInputFile(path: path))
 
 
 
