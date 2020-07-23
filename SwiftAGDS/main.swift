@@ -8,9 +8,9 @@
 
 import Foundation
 
-let path = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/CyclicPermutation/cyclicPerm1.in"
+let path = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/RepeatingSequence/repeatingSequence1.in"
 
-print(CyclicPermutation().solutionByInputFile(path: path))
+print(RepeatingSequence().solutionByInputFile(path: path))
 
 
 
