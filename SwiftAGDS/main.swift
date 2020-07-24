@@ -8,9 +8,10 @@
 
 import Foundation
 
-let path = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/RepeatingSequence/repeatingSequence1.in"
+let pathIn = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/SushiTestCases/sushi.6.in"
+let pathOut = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/SushiTestCases/sushi.6.out"
 
-print(RepeatingSequence().solutionByInputFile(path: path))
+print(SushiRestaurant().solutionByInputFile(inFile: pathIn, outFile: pathOut))
 
 
 
