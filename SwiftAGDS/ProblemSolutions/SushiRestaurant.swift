@@ -12,13 +12,19 @@ class SushiRestaurant {
     
     var adjacentList = [[Int]]()
     var targets = [Int]()
-    var visisted = [Bool]()
+    var visited = [Bool]()
+    var distance = Int.max
+    var numVertices = 0
     
     func solution(_ adjList: [[Int]], _ targetsIn: [Int]) -> Int {
+        print("size: \(adjList.count)")
         adjacentList = adjList
+        numVertices = adjacentList.count
         targets = targetsIn
         cutLeaf(vertice: targets.first!)
-        return -1
+        let edges = adjacentList.map {$0.map {Edge(vertice: $0, distance: 1)}}
+        let diameter = Diameter.init().solution(adjList: edges)
+        return (numVertices - 1) * 2 - diameter
     }
     
     func solutionByInputFile(inFile: String, outFile: String? = nil) -> Int {
@@ -29,7 +35,7 @@ class SushiRestaurant {
         let numRestaurant = header.first!
         let numRealSushi = header.last!
         adjacentList = [[Int]](repeating: [Int](), count: numRestaurant)
-        visisted = [Bool](repeating: false, count: numRestaurant)
+        visited = [Bool](repeating: false, count: numRestaurant)
         targets = lines[1].components(separatedBy: .whitespaces).map {Int($0)!}
         for i in 2...numRestaurant {
             let line = lines[i].components(separatedBy: .whitespaces).map {Int($0)!}
@@ -43,26 +49,27 @@ class SushiRestaurant {
         
         if let outFile = outFile, let line = readFile(outFile)?.first, let answer = Int(line) {
             if result == answer {
-                print("Sucess")
+                print("Success")
             } else {
-                print("Fail")
+                print("Fail (expected:\(answer) - result:\(result))")
             }
         }
         return result
     }
     
     func cutLeaf(vertice u: Int) -> Bool {
-        visisted[u] = true
+        visited[u] = true
         let edges = adjacentList[u]
-        if edges.count == 1, visisted[edges.first!] {
+        if edges.count == 1, visited[edges.first!] {
             return !targets.contains(u)
         } else {
-            var found = false
+            var found = targets.contains(u)
             for v in edges {
-                if !visisted[v] {
+                if !visited[v] {
                     if cutLeaf(vertice: v) {
                         adjacentList[u].remove(at: adjacentList[u].firstIndex(of: v)!)
                         adjacentList[v].remove(at: adjacentList[v].firstIndex(of: u)!)
+                        numVertices -= 1
                     } else {
                         found = true
                     }

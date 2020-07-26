@@ -7,13 +7,9 @@
 //
 
 import Foundation
-
-let pathIn = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/SushiTestCases/sushi.6.in"
-let pathOut = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/SushiTestCases/sushi.6.out"
-
-print(SushiRestaurant().solutionByInputFile(inFile: pathIn, outFile: pathOut))
-
-
-
+for i in 1...25 {
+    let testCase = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/SushiTestCases/sushi.\(i)"
+    print(SushiRestaurant().solutionByInputFile(inFile: "\(testCase).in", outFile: "\(testCase).out"))
+}
 
 
