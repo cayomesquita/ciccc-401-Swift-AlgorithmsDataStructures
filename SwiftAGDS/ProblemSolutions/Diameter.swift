@@ -11,15 +11,53 @@ import Foundation
 class Diameter {
     
     var adjacentList = [[Edge]]()
+    var visited = [Bool]()
+    var distance = [Int]()
     
     func solution(adjList: [[Edge]]) -> Int {
-        var longestDistance = 0
-        for num in 1..<adjList.count {
-            if adjList[num].count == 1 {
-                distanceDFS(parent: num, edge: adjList[num].first!, distanceSoFar: 0, longestDistance: &longestDistance)
+        adjacentList = adjList
+        visited = [Bool](repeating: false, count: adjacentList.count)
+        distance = [Int](repeating: 0, count: adjacentList.count)
+        
+        let queue = Queue<Int>()
+        var index = 0
+        queue.enqueue(item: index)
+        while let u = queue.dequeue() {
+            visited[u] = true
+            for edge in adjList[u] {
+                let v = edge.vertice
+                if !visited[v] {
+                    queue.enqueue(item: v)
+                    distance[v] = distance[u] + edge.distance
+                }
             }
         }
-        return longestDistance
+        for i in 0..<distance.count {
+            if distance[i] > distance[index] {
+                index = i
+            }
+        }
+        visited = [Bool](repeating: false, count: adjacentList.count)
+        distance = [Int](repeating: 0, count: adjacentList.count)
+    
+        queue.enqueue(item: index)
+        while let u = queue.dequeue() {
+            visited[u] = true
+            for edge in adjList[u] {
+                let v = edge.vertice
+                if !visited[v] {
+                    queue.enqueue(item: v)
+                    distance[v] = distance[u] + edge.distance
+                }
+            }
+        }
+        for i in 0..<distance.count {
+            if distance[i] > distance[index] {
+                index = i
+            }
+        }
+        
+        return distance.max()!
     }
     
     func solutionByInputFile(path: String) -> Int{
@@ -29,16 +67,16 @@ class Diameter {
                 let arr = lines[i].components(separatedBy: .whitespaces).map {Int($0)!}
                 var j = 0
                 var element = Int(arr[j])
-                let verticeA = element
+                let u = element - 1
                 j += 1
                 element = Int(arr[j])
                 while element >= 0 {
-                    let verticeB = element
+                    let v = element - 1
                     j += 1
                     element = Int(arr[j])
                     let distance = element
-                    let edge = Edge.init(vertice: verticeB, distance: distance)
-                    adjacentList[verticeA - 1].append(edge)
+                    let edge = Edge.init(vertice: v, distance: distance)
+                    adjacentList[u].append(edge)
                     j += 1
                     element = Int(arr[j])
                 }
@@ -46,20 +84,6 @@ class Diameter {
             return solution(adjList: adjacentList)
         }
         return -1
-    }
-    
-    fileprivate func distanceDFS(parent: Int, edge current: Edge, distanceSoFar: Int, longestDistance: inout Int) {
-        let distance = distanceSoFar + current.distance
-        let edges = adjacentList[current.vertice - 1]
-        if edges.count > 1 {
-            for edge in edges {
-                if edge.vertice != parent {
-                    distanceDFS(parent: current.vertice, edge: edge, distanceSoFar: distance, longestDistance: &longestDistance)
-                }
-            }
-        } else {
-            longestDistance = max(longestDistance, distance)
-        }
     }
     
 }
