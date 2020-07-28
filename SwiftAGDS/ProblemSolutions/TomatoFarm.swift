@@ -18,13 +18,13 @@ class TomatoFarm {
         var unRipe = 0
         var level = [[Int]](repeating: [Int](repeating: count, count: box.first!.count), count: box.count)
         
-        let queue = Queue<Position>.init()
+        let queue = Queue<(row: Int, column: Int)>.init()
         let dx = [1, -1, 0, 0]
         let dv = [0, 0, 1, -1]
         for row in 0..<box.count {
             for column in 0..<box[row].count {
                 if box[row][column] > 0 {
-                    queue.enqueue(item: Position.init(row: row, column: column))
+                    queue.enqueue(item: (row: row, column: column))
                 } else if box[row][column] == 0 {
                     unRipe += 1
                 }
@@ -35,7 +35,7 @@ class TomatoFarm {
                 let ny = ripeTomatoPosition.row + dv[i]
                 let nx = ripeTomatoPosition.column + dx[i]
                 if ny >= 0, nx >= 0, ny < box.count, nx < box.first!.count {
-                    let nTomatoPosition = Position.init(row: ny, column: nx)
+                    let nTomatoPosition = (row: ny, column: nx)
                     if box[nTomatoPosition.row][nTomatoPosition.column] == 0 {
                         unRipe -= 1
                         box[nTomatoPosition.row][nTomatoPosition.column] = -1
@@ -73,8 +73,4 @@ class TomatoFarm {
         }
         return result
     }
-}
-
-fileprivate struct Position {
-    let row, column: Int
 }

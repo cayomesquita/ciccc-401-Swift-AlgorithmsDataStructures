@@ -11,9 +11,9 @@ import Foundation
 class Bridge {
  
     var grid = [[Int]]() // -1 not visited, 0 water, 1..n island
-    fileprivate let queue = Queue<Position>.init()
-    let dy = [0, 0, 1, -1]
-    let dx = [1, -1, 0, 0]
+    fileprivate let queue = Queue<(y: Int, x:Int)>.init()
+    fileprivate let dy = [0, 0, 1, -1]
+    fileprivate let dx = [1, -1, 0, 0]
     
     fileprivate func bfsFillIslands(_ gridIn: [[Int]]) -> [[Int]] {
         let size = gridIn.count
@@ -24,7 +24,7 @@ class Bridge {
                 if grid[y][x] < 0 { // not visited
                     grid[y][x] = 0
                     if gridIn[y][x] > 0 { // island
-                        self.queue.enqueue(item: Position.init(y: y, x: x))
+                        self.queue.enqueue(item: (y: y, x: x))
                         while let cell = self.queue.dequeue() {
                             let x = cell.x
                             let y = cell.y
@@ -34,7 +34,7 @@ class Bridge {
                                 let nx = x + dx[i]
                                 if ny >= 0, nx >= 0, ny < size, nx < size, grid[ny][nx] < 0 { // not visited
                                     if gridIn[ny][nx] > 0 {
-                                        self.queue.enqueue(item: Position.init(y: ny, x: nx))
+                                        self.queue.enqueue(item: (y: ny, x: nx))
                                     } else {
                                         grid[ny][nx] = 0
                                     }
@@ -52,7 +52,7 @@ class Bridge {
     fileprivate func bfsLowestDistance(_ y: Int, _ x: Int, _ size: Int, _ distance: inout Int) {
         var grid = self.grid
         let tag = grid[y][x]
-        self.queue.enqueue(item: Position.init(y: y, x: x))
+        self.queue.enqueue(item: (y: y, x: x))
         while let cell = self.queue.dequeue() {
             let x = cell.x
             let y = cell.y
@@ -65,7 +65,7 @@ class Bridge {
                 let nx = x + dx[i]
                 if ny >= 0, nx >= 0, ny < size, nx < size{
                     if grid[ny][nx] == 0 {
-                        self.queue.enqueue(item: Position.init(y: ny, x: nx))
+                        self.queue.enqueue(item: (y: ny, x: nx))
                         grid[ny][nx] = nDistance
                     } else if grid[ny][nx] > 0, grid[ny][nx] != tag {
                         distance = min(distance, abs(grid[y][x]))
@@ -124,8 +124,3 @@ class Bridge {
         return result
     }
 }
-
-fileprivate struct Position {
-    let y, x: Int
-}
-
