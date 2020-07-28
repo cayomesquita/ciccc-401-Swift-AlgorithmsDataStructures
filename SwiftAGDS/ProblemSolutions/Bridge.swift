@@ -82,13 +82,6 @@ class Bridge {
     
     func solution(grid gridIn: [[Int]]) -> Int {
         self.grid = bfsFillIslands(gridIn)
-        for row in gridIn {
-            print(row)
-        }
-        print("")
-        for row in self.grid {
-            print(row)
-        }
         let size = self.grid.count
         var distance = Int.max
         for y in 0..<size {
