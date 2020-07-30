@@ -7,13 +7,13 @@
 //
 
 import Foundation
-for i in 1...1 {
-    let testCase = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/CourseScheduleTestCases/courseSchedule.\(i)"
+for i in 1...2 {
+    let testCase = "/Users/cornerstone/Workspace/WMAD/SwiftAGDS/SwiftAGDS/ProblemSolutions/Inputs/CourseScheduleIITestCases/courseScheduleII.\(i)"
     if let url = URL.init(string: testCase) {
         print("\([Character](repeating: "-", count: 40).reduce("") {$0 + String.init($1)})")
         print("TestCase: \(url.lastPathComponent)")
     }
-    print(CourseSchedule().solutionByInputFile(inFile: "\(testCase).in", outFile: "\(testCase).out"))
+    print(CourseScheduleII().solutionByInputFile(inFile: "\(testCase).in", outFile: "\(testCase).out"))
 }
 
 //var uf = UF.init(10)
