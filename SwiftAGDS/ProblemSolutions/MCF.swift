@@ -149,3 +149,4 @@ fileprivate struct UnionFind {
     
 }
 
+runInput()
