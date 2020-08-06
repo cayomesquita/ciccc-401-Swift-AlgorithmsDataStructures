@@ -16,7 +16,7 @@ class MCF {
     
     func solution(_ pipes: [[Int]], _ n: Int, _ m: Int, _ d: Int) -> Int {
         self.d = d
-        var unionFind = UF(n + 1)
+        var unionFind = UnionFind(n + 1)
         var planCost = 0
         var cost = 0
         for nums in pipes {
@@ -49,36 +49,10 @@ class MCF {
                 }
             }
         }
-        print("PlanCost: \(planCost) - Cost: \(cost) = \(planCost - cost)")
+//        print("PlanCost: \(planCost) - Cost: \(cost) = \(planCost - cost)")
         return cost < planCost ? days : 0
      }
-        
-    func solutionByInputFile(inFile: String, outFile: String? = nil) -> Int {
-        guard let lines = readFile(inFile) else {
-            return -1
-        }
-        let header = lines[0].components(separatedBy: .whitespaces).map { Int($0)! }
-        let n = header[0]
-        let m = header[1]
-        let d = header[2]
-        var arr = [[Int]]()
-        for i in 1...m {
-            var nums = lines[i].components(separatedBy: .whitespaces).map {Int($0)!}
-            nums.append(i < n ? 1 : 0)
-            arr.append(nums)
-        }
-
-        let result = solution(arr, n, m, d)
-
-        if let outFile = outFile, let line = readFile(outFile)?.first, let answer = Int(line) {
-            if result == answer {
-                print("Success")
-            } else {
-                print("Fail (expected:\(answer) - result:\(result))")
-            }
-        }
-        return result
-    }
+       
 }
 
 fileprivate struct Tuple {
@@ -93,3 +67,85 @@ extension Tuple: Comparable {
         return lhs.cost < rhs.cost
     }
 }
+
+func runInput() {
+    if let header = readLine()?.components(separatedBy: .whitespaces).map({ Int($0)! }) {
+        let n = header[0]
+        let m = header[1]
+        let d = header[2]
+        var arr = [[Int]]()
+        for i in 1...m {
+            if var nums = readLine()?.components(separatedBy: .whitespaces).map({ Int($0)! }) {
+                nums.append(i < n ? 1 : 0)
+                arr.append(nums)
+            }
+        }
+        
+        print(MCF().solution(arr, n, m, d))
+    }
+    
+}
+
+fileprivate struct UnionFind {
+    /// parent[i] = parent of i
+    private var parent: [Int]
+    /// size[i] = number of nodes in tree rooted at i
+    private var size: [Int]
+    /// number of components
+    private(set) var count: Int
+    
+    /// Initializes an empty union-find data structure with **n** elements
+    /// **0** through **n-1**.
+    /// Initially, each elements is in its own set.
+    /// - Parameter n: the number of elements
+    public init(_ n: Int) {
+        self.count = n
+        self.size = [Int](repeating: 1, count: n)
+        self.parent = [Int](repeating: 0, count: n)
+        for i in 0..<n {
+            self.parent[i] = i
+        }
+    }
+    
+    /// Returns the canonical element(root) of the set containing element `p`.
+    /// - Parameter p: an element
+    /// - Returns: the canonical element of the set containing `p`
+    public mutating func find(_ p: Int) -> Int {
+        var canonicalElement = p
+        repeat {
+            canonicalElement = parent[canonicalElement]
+        } while canonicalElement != parent[canonicalElement]
+        parent[p] = canonicalElement
+        return canonicalElement
+    }
+    
+    /// Returns `true` if the two elements are in the same set.
+    /// - Parameters:
+    ///   - p: one elememt
+    ///   - q: the other element
+    /// - Returns: `true` if `p` and `q` are in the same set; `false` otherwise
+    public mutating func connected(_ p: Int, _ q: Int) -> Bool {
+        return find(p) == find(q)
+    }
+    
+    /// Merges the set containing element `p` with the set containing
+    /// element `q`
+    /// - Parameters:
+    ///   - p: one element
+    ///   - q: the other element
+    public mutating func union(_ p: Int, _ q: Int) {
+        let rootP = find(p)
+        let rootQ = find(q)
+        let weightP = size[rootP]
+        let weightQ = size[rootQ]
+        if weightP > weightQ {
+            parent[rootQ] = rootP
+            size[rootP] = weightP + weightQ
+        } else {
+            parent[rootP] = rootQ
+            size[rootQ] = weightP + weightQ
+        }
+    }
+    
+}
+
