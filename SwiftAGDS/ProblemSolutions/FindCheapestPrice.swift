@@ -28,7 +28,7 @@ class FindCheapestPrice {
                 if d[v][steps] > d[u][stepsU] + price {
                     d[v][steps] = d[u][stepsU] + price
                 }
-                if dst != v, steps < K+1 {
+                if dst != v, steps <= K {
                     queue.enqueue(item: (v, steps))
                 }
             }
